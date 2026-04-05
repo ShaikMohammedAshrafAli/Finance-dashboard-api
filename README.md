@@ -6,17 +6,9 @@ A production-ready REST API backend for a Finance Data Processing and Access Con
 
 ## Table of Contents
 - [Tech Stack](#tech-stack)
-- [Architecture Overview](#architecture-overview)
-- [Project Structure](#project-structure)
 - [Role & Access Control](#role--access-control)
-- [Data Model](#data-model)
 - [API Endpoints](#api-endpoints)
-- [Quick Start](#quick-start)
-- [Running with PostgreSQL](#running-with-postgresql)
 - [Default Credentials](#default-credentials)
-- [Sample API Requests](#sample-api-requests)
-- [Assumptions & Design Decisions](#assumptions--design-decisions)
-
 ---
 
 ## Tech Stack
