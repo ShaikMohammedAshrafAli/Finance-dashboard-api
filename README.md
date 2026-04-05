@@ -1,10 +1,10 @@
-# 💰 Finance Dashboard Backend
+# Finance Dashboard Backend
 
 A production-ready REST API backend for a Finance Data Processing and Access Control system built with **Java 17 + Spring Boot 3**.
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 - [Tech Stack](#tech-stack)
 - [Architecture Overview](#architecture-overview)
 - [Project Structure](#project-structure)
@@ -35,107 +35,7 @@ A production-ready REST API backend for a Finance Data Processing and Access Con
 
 ---
 
-## 🏗 Architecture Overview
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        CLIENT (HTTP)                            │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                             ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                   SECURITY LAYER                                │
-│  JwtAuthenticationFilter → SecurityConfig (role-based rules)    │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                             ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                   CONTROLLER LAYER                              │
-│  AuthController │ UserController │ RecordController │ Dashboard │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                             ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                   SERVICE LAYER                                 │
-│  AuthService │ UserService │ FinancialRecordService │ Dashboard │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                             ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                   REPOSITORY LAYER                              │
-│        UserRepository │ FinancialRecordRepository               │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                             ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                   DATABASE                                      │
-│              H2 (dev)  /  PostgreSQL (prod)                     │
-└─────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## 📁 Project Structure
-
-```
-finance-dashboard/
-├── src/
-│   ├── main/
-│   │   ├── java/com/finance/dashboard/
-│   │   │   ├── FinanceDashboardApplication.java   ← Entry point
-│   │   │   ├── config/
-│   │   │   │   ├── SecurityConfig.java            ← JWT + role-based security rules
-│   │   │   │   ├── OpenApiConfig.java             ← Swagger configuration
-│   │   │   │   └── DataSeeder.java                ← Seeds default users + sample data
-│   │   │   ├── controller/
-│   │   │   │   ├── AuthController.java            ← POST /api/auth/login
-│   │   │   │   ├── UserController.java            ← /api/users/**
-│   │   │   │   ├── FinancialRecordController.java ← /api/records/**
-│   │   │   │   └── DashboardController.java       ← /api/dashboard/**
-│   │   │   ├── service/
-│   │   │   │   ├── AuthService.java
-│   │   │   │   ├── UserService.java
-│   │   │   │   ├── FinancialRecordService.java
-│   │   │   │   ├── DashboardService.java
-│   │   │   │   └── impl/                          ← All implementations
-│   │   │   ├── entity/
-│   │   │   │   ├── User.java
-│   │   │   │   ├── Role.java                      ← VIEWER | ANALYST | ADMIN
-│   │   │   │   ├── FinancialRecord.java
-│   │   │   │   └── TransactionType.java           ← INCOME | EXPENSE
-│   │   │   ├── repository/
-│   │   │   │   ├── UserRepository.java
-│   │   │   │   └── FinancialRecordRepository.java ← Custom JPQL queries
-│   │   │   ├── dto/
-│   │   │   │   ├── request/                       ← Input DTOs with validation
-│   │   │   │   └── response/                      ← Output DTOs
-│   │   │   ├── security/
-│   │   │   │   ├── JwtUtils.java                  ← Token generation & validation
-│   │   │   │   ├── JwtAuthenticationFilter.java   ← Per-request JWT check
-│   │   │   │   └── UserDetailsServiceImpl.java
-│   │   │   └── exception/
-│   │   │       ├── GlobalExceptionHandler.java    ← Centralised error handling
-│   │   │       ├── ResourceNotFoundException.java
-│   │   │       ├── DuplicateResourceException.java
-│   │   │       └── AccessDeniedException.java
-│   │   └── resources/
-│   │       ├── application.properties             ← H2 dev config
-│   │       └── application-postgres.properties    ← PostgreSQL config
-│   └── test/
-│       └── java/com/finance/dashboard/
-│           ├── FinanceDashboardApplicationTests.java
-│           ├── service/
-│           │   ├── UserServiceTest.java
-│           │   └── FinancialRecordServiceTest.java
-│           └── controller/
-│               └── AuthControllerTest.java
-├── pom.xml
-└── README.md
-```
-
----
-
-## 🔐 Role & Access Control
+## Role & Access Control
 
 ### Roles
 
@@ -165,7 +65,7 @@ finance-dashboard/
 
 ---
 
-## 🗄 Data Model
+## Data Model
 
 ### Entity Relationship Diagram
 
@@ -196,7 +96,7 @@ TransactionType ENUM: INCOME | EXPENSE
 
 ---
 
-## 🌐 API Endpoints
+## API Endpoints
 
 ### Authentication
 
@@ -322,7 +222,7 @@ java -jar target/finance-dashboard-1.0.0.jar --spring.profiles.active=postgres
 
 ---
 
-## 🔑 Default Credentials
+## Default Credentials
 
 These users are automatically seeded on startup:
 
@@ -481,7 +381,7 @@ curl -X POST http://localhost:8080/api/records \
 
 ---
 
-## 🏛 Assumptions & Design Decisions
+## Assumptions & Design Decisions
 
 | # | Decision | Reason |
 |---|----------|--------|
@@ -498,7 +398,7 @@ curl -X POST http://localhost:8080/api/records \
 
 ---
 
-## ✅ Features Implemented
+## Features Implemented
 
 - [x] JWT Authentication
 - [x] Role-based access control (VIEWER / ANALYST / ADMIN)
@@ -521,9 +421,3 @@ curl -X POST http://localhost:8080/api/records \
 - [x] Automatic data seeding
 - [x] Unit tests (service layer)
 - [x] Integration tests (controller layer)
-
----
-
-## 📄 License
-
-This project is created for evaluation purposes.
