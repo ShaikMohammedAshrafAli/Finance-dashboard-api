@@ -45,7 +45,7 @@ A production-ready REST API backend for a Finance Data Processing and Access Con
                              ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │                   SECURITY LAYER                                │
-│  JwtAuthenticationFilter → SecurityConfig (role-based rules)   │
+│  JwtAuthenticationFilter → SecurityConfig (role-based rules)    │
 └────────────────────────────┬────────────────────────────────────┘
                              │
                              ▼
@@ -171,7 +171,7 @@ finance-dashboard/
 
 ```
 ┌──────────────────────────┐          ┌────────────────────────────────┐
-│         users            │          │       financial_records         │
+│         users            │          │       financial_records        │
 ├──────────────────────────┤          ├────────────────────────────────┤
 │ id          BIGINT (PK)  │◄────┐    │ id           BIGINT (PK)       │
 │ name        VARCHAR(100) │     │    │ amount       DECIMAL(15,2)     │
